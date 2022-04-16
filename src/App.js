@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Exchange from './components/exchange/exchange';
+import Header from './components/header/header';
+import OtherCurrenices from './components/otherCurrencies/otherCurrenices';
+import Footer from './components/footer/footer';
+import LanguageContext from './contexts/langContext';
+
 
 function App() {
+  const [currencyValues, setCurrencyValues] = useState([]);
+  const [lang, setLang] = useState('pl')
+  
+
+  const getExchanges = async () => {
+    // returns latest exchange of all currencies at the euro exchange rate
+    await axios.get('http://api.exchangeratesapi.io/v1/latest?access_key=fe33b019d92fcf29167debd31e669d26')
+    .then(res => {
+        setCurrencyValues(res.data.rates);
+    }) .catch(error => {
+        console.log(error);
+    })
+  }
+  useEffect(() => {
+      getExchanges()
+      console.log('loaded');
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LanguageContext.Provider value={{lang, setLang}}>
+      <Header/>
+      <Exchange value={currencyValues}/>
+      <OtherCurrenices value={currencyValues}/>
+      <Footer/>
+    </LanguageContext.Provider>
   );
 }
 
