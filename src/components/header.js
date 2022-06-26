@@ -5,8 +5,8 @@ import LanguageContext from '../contexts/langContext';
 export default function Header(){
     const {lang, setLang} = useContext(LanguageContext)
     const title = {
-        'pl': 'Kantor',
-        'en': 'Cantor'
+        'pl': 'KANTOR',
+        'en': 'CANTOR'
     }
     const changeLanguage = (e) => {
        setLang(e.target.value);
@@ -32,12 +32,13 @@ const Container = styled.header`
     justify-content: center;
     width: 100%;
     height: 10vh;
+    box-shadow: 0px 4px 6px 0px rgba(204, 204, 204, 1);
     background-color: #5D8BF4;
     position:relative;
 `;
 
 const Title = styled.h1`
-    color: #DFF6FF;
+    color: #fff;
 `;
 
 const Nav = styled.nav`
