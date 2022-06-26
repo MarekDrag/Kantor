@@ -40,7 +40,7 @@ export default function OtherCurrenices(props){
                 </Head>
                 {currencies.map(value => {
                     return(
-                        <Row>
+                        <Row key={value.name}>
                             <Field style={{textAlign: 'center'}}>{exchangeRate(value.symbol)}</Field>
                             <Field style={{textAlign: 'center'}}>{value.symbol}</Field>
                             <Field>{value.name}</Field>

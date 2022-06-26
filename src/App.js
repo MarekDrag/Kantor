@@ -15,7 +15,7 @@ function App() {
 
   const getExchanges = async () => {
     // returns latest exchange of all currencies at the euro exchange rate
-    await axios.get('http://api.exchangeratesapi.io/v1/latest?access_key=fe33b019d92fcf29167debd31e669d26')
+    await axios.get('https://api.exchangeratesapi.io/v1/latest?access_key=fe33b019d92fcf29167debd31e669d26')
     .then(res => {
         setCurrencyValues(res.data.rates);
     }) .catch(error => {
