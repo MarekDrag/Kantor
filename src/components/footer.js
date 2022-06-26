@@ -23,4 +23,5 @@ const Container = styled.footer`
 const Span = styled.span`
     width: 100%;
     text-align:center;
+    color:#fff;
 `;

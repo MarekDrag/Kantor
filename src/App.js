@@ -1,10 +1,10 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Exchange from './components/exchange/exchange';
-import Header from './components/header/header';
+import Exchange from './components/exchange';
+import Header from './components/header';
 import OtherCurrenices from './components/otherCurrencies/otherCurrenices';
-import Footer from './components/footer/footer';
+import Footer from './components/footer';
 import LanguageContext from './contexts/langContext';
 
 
@@ -24,7 +24,6 @@ function App() {
   }
   useEffect(() => {
       getExchanges()
-      console.log('loaded');
   }, [])
 
   return (

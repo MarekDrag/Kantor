@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import LanguageContext from '../../contexts/langContext';
+import LanguageContext from '../contexts/langContext';
 
 export default function Header(){
     const {lang, setLang} = useContext(LanguageContext)
@@ -8,14 +8,18 @@ export default function Header(){
         'pl': 'Kantor',
         'en': 'Cantor'
     }
-
+    const changeLanguage = (e) => {
+       setLang(e.target.value);
+    }
 
     return(
         <Container>
             <Title>{title[lang]}</Title>
             <Nav>
-                <Button onClick={() => setLang('pl')}><Img src='pl_flag.jpg'/></Button>
-                <Button onClick={() => setLang('en')}><Img src='eng_flag.png'/></Button>
+                <select value={lang} onChange={changeLanguage}>
+                    <option value='pl'>PL</option>
+                    <option value='en'>ENG</option>
+                </select>
                 
             </Nav>
         </Container>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
-import LanguageContext from '../../contexts/langContext';
+import LanguageContext from '../contexts/langContext';
 
 export default function Exchange(props){
     const [currency, setCurrency] = useState('PLN');
@@ -34,16 +34,16 @@ export default function Exchange(props){
     return(
         <PageContainer>
             <Container>
-                <h2>{title[lang]}</h2>
+                <Title>{title[lang]}</Title>
                 <Wrapper>
                     <ChangeCurrency value={currency} onChange={(e) => setCurrency(e.target.value)}>
-                        {symbols.map(x => {
-                            return <option value={x}>{x}</option>
+                        {symbols.map(symbol => {
+                            return <option key={symbol} value={symbol}>{symbol}</option>
                         })}
                     </ChangeCurrency>
                     <ChangeCurrency value={currency2} onChange={(e) => setCurrency2(e.target.value)}>
-                        {symbols.map(x => {
-                            return <option value={x}>{x}</option>
+                        {symbols.map(symbol => {
+                            return <option key={symbol} value={symbol}>{symbol}</option>
                         })}
                     </ChangeCurrency>
                 </Wrapper>
@@ -71,6 +71,10 @@ const PageContainer = styled.section`
     width:100%;
 `;
 
+const Title = styled.h2`
+    margin-top:10px;
+`;
+
 const Container = styled.div`
     display:flex;
     justify-content:center;
@@ -78,7 +82,6 @@ const Container = styled.div`
     margin-top:10vh;
     width:60vw;
     height:300px;
-    border: 1px solid black;
     border-radius: 10px;
     box-shadow: 0px 0px 1em -3px rgba(121, 128, 128, 1);
 `;
