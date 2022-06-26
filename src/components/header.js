@@ -53,17 +53,3 @@ const Nav = styled.nav`
         margin-left:80vw;
     }
 `;
-
-const Button = styled.button`
-    background: none;
-    border: none;
-    width: 20px;
-    margin-right:10px;
-    &:hover{
-        opacity: 0.7;
-    }
-`;
-
-const Img = styled.img`
-    width: 20px;
-`;
