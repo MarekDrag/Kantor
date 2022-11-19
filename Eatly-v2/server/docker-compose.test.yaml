@@ -1,0 +1,30 @@
+version: '2.4'
+services:
+  backend-test:
+    image: node:16-alpine
+    working_dir: /app
+    command: npm run test:e2e:run
+    user: node
+    volumes:
+      - ./:/app:cached
+    environment:
+      - DB_URL=postgres://admin:secret@test-postgres:5432/dev
+      - ACCESS_TOKEN_KEY=1c5524827b5e4792feed92debfdce7db2a5e502fb13807cc5fc10849186717071cb88b1f563cd8e17bb19cfd25e697f89b532bc9690806b163d63dcda93cde5a
+      - ACCESS_TOKEN_EXPIRATION_TIME=60m
+    depends_on:
+      - test-postgres
+    networks:
+      - sewio_test
+
+  test-postgres:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=dev
+    networks:
+      - sewio_test
+
+networks:
+  sewio_test:
+    name: sewio_test

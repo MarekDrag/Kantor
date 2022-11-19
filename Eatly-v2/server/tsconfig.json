@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@db": ["db/*"],
+      "@modules": ["modules/*"],
+      "@types": ["types/*"]
+    }
+  },
+  "include": ["src", "test", "src/db", "src/db/migrations"],
+  "exclude": ["node_modules", "dist"],
+  "files": [
+    "src/types/knex-stringcase.d.ts"
+  ],
+}
